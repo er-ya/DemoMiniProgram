@@ -3,6 +3,7 @@
   display: flex;
   height: 88rpx;
   line-height: 88rpx;
+  background: #fff;
 }
 .tab-contol-item {
   flex: 1;

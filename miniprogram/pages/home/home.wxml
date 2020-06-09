@@ -1,15 +1,15 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
-<view>我是首页</view>
-<!-- 获取用户信息的方式 -->
-<button size="mini"
-        open-type="getUserInfo"
-        bindgetuserinfo="handleGetUserInfo">
-        获取授权
-</button>
-<!-- 展示用户信息的方式 -->
-<!-- <open-data type="userAvatarUrl"></open-data> -->
-
-<!-- tab-control的练习 -->
-<w-tab-control titles="{{['流行','新款','精选']}}"
-              bind:itemclick="handleTabClick"></w-tab-control>
+<!-- 1.展示轮播图 -->
+<w-swiper list="{{banners}}"/>
+<!-- 2.推荐数据的展示 -->
+<w-recommend recommends="{{recommends}}" bind:imageload="handleImageLoad"/>
+<!-- 3.展示本周流行 -->
+<w-popular/>
+<!-- 4.tab-control -->
+<w-tab-control id="tab-control" class="{{isTabFixed ? 'fixed' : ''}}" titles="{{titles}}" bind:itemclick="handleTabClick"/>
+<w-tab-control titles="{{titles}}" wx:if="{{isTabFixed}}"/>
+<!-- 5.展示商品数据 -->
+<w-goods goods="{{goods[currentType].list}}"/>
+<!-- 6.返回顶部 -->
+<!-- hidden: hidden属于对自定义的组件是无效的 -->
+<w-back-top wx:if="{{showBackTop}}"/>
